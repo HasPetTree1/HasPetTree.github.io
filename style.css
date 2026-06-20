@@ -148,26 +148,27 @@ h1 {
 /* Scrolling links row */
 .links-wrapper {
   width: 100%;
-  overflow: hidden;
-  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.links-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.links-wrapper.grabbing {
+  cursor: grabbing;
 }
 
 .links-track {
   display: flex;
   gap: 0.65rem;
-  animation: scroll-left 22s linear infinite;
   width: max-content;
-}
-
-.links-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scroll-left {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 /* Buttons */
