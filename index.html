@@ -84,6 +84,7 @@
     let startX = 0;
     let startScroll = 0;
     let paused = false;
+    let hovered = false;
     let rafId = null;
     let pos = 0;
 
@@ -104,10 +105,8 @@
     rafId = requestAnimationFrame(autoScroll);
 
     /* Pause on hover */
-    wrapper.addEventListener('mouseenter', () => { paused = true; });
-    wrapper.addEventListener('mouseleave', () => {
-      if (!isDown) paused = false;
-    });
+    wrapper.addEventListener('mouseenter', () => { hovered = true; paused = true; });
+    wrapper.addEventListener('mouseleave', () => { hovered = false; if (!isDown) paused = false; });
 
     /* Mouse drag */
     wrapper.addEventListener('mousedown', (e) => {
@@ -123,7 +122,7 @@
       if (!isDown) return;
       isDown = false;
       pos = wrapper.scrollLeft;
-      paused = false;
+      if (!hovered) paused = false;
       wrapper.classList.remove('grabbing');
     });
 
