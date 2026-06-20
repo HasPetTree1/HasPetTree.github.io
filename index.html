@@ -103,6 +103,12 @@
 
     rafId = requestAnimationFrame(autoScroll);
 
+    /* Pause on hover */
+    wrapper.addEventListener('mouseenter', () => { paused = true; });
+    wrapper.addEventListener('mouseleave', () => {
+      if (!isDown) paused = false;
+    });
+
     /* Mouse drag */
     wrapper.addEventListener('mousedown', (e) => {
       isDown = true;
