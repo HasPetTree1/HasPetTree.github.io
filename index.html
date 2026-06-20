@@ -92,7 +92,7 @@
 
     function autoScroll() {
       if (!paused) {
-        wrapper.scrollLeft += 0.8;
+        wrapper.scrollLeft += 0.35;
         if (wrapper.scrollLeft >= halfWidth()) {
           wrapper.scrollLeft -= halfWidth();
         }
@@ -148,6 +148,16 @@
     wrapper.addEventListener('touchend', () => {
       paused = false;
     });
+
+    /* Mouse wheel */
+    wrapper.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      let next = wrapper.scrollLeft + e.deltaY * 0.6 + e.deltaX * 0.6;
+      const half = halfWidth();
+      if (next >= half) next -= half;
+      if (next < 0) next += half;
+      wrapper.scrollLeft = next;
+    }, { passive: false });
 
     /* Prevent link clicks after a drag */
     wrapper.addEventListener('click', (e) => {
