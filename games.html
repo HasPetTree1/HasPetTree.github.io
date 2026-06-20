@@ -32,8 +32,11 @@
       transform: translateY(-2px);
     }
     .btn-game .game-icon {
-      font-size: 1.3rem;
-      line-height: 1;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      object-fit: contain;
     }
     .btn-game .game-name {
       flex: 1;
@@ -57,22 +60,22 @@
 
     <div class="game-links">
       <a href="https://www.chess.com" class="btn-game" target="_blank" rel="noopener">
-        <span class="game-icon">♟️</span>
+        <img class="game-icon" src="https://www.google.com/s2/favicons?domain=chess.com&sz=32" alt="Chess.com" />
         <span class="game-name">Chess.com</span>
         <span class="arrow">↗</span>
       </a>
       <a href="https://minesweeperonline.com" class="btn-game" target="_blank" rel="noopener">
-        <span class="game-icon">💣</span>
+        <img class="game-icon" src="https://www.google.com/s2/favicons?domain=minesweeperonline.com&sz=32" alt="Minesweeper Online" />
         <span class="game-name">Minesweeper Online</span>
         <span class="arrow">↗</span>
       </a>
       <a href="https://playsnake.org" class="btn-game" target="_blank" rel="noopener">
-        <span class="game-icon">🐍</span>
+        <img class="game-icon" src="https://www.google.com/s2/favicons?domain=playsnake.org&sz=32" alt="Play Snake" />
         <span class="game-name">Play Snake</span>
         <span class="arrow">↗</span>
       </a>
       <a href="https://itch.io/games/platform-web" class="btn-game" target="_blank" rel="noopener">
-        <span class="game-icon">🎮</span>
+        <img class="game-icon" src="https://www.google.com/s2/favicons?domain=itch.io&sz=32" alt="itch.io" />
         <span class="game-name">itch.io Web Games</span>
         <span class="arrow">↗</span>
       </a>
