@@ -77,6 +77,102 @@
     </div>
   </div>
 
+  <!-- Twitch live banner (hidden until stream is online) -->
+  <a id="live-banner" href="https://www.twitch.tv/haspettree" target="_blank" rel="noopener">
+    <div class="live-dot"></div>
+    <div class="live-info">
+      <span class="live-badge">LIVE</span>
+      <span class="live-text">HasPetTree is live on Twitch!</span>
+    </div>
+    <div id="twitch-embed" style="display:none"></div>
+  </a>
+
+  <style>
+    #live-banner {
+      display: none;
+      position: relative;
+      z-index: 1;
+      margin-top: 1rem;
+      width: min(860px, 92vw);
+      background: rgba(145, 70, 255, 0.25);
+      border: 1px solid rgba(145, 70, 255, 0.5);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 16px;
+      padding: 1rem 1.4rem;
+      text-decoration: none;
+      color: #fff;
+      align-items: center;
+      gap: 1rem;
+      transition: background 0.2s, transform 0.15s;
+      animation: fadeInBanner 0.4s ease;
+    }
+    #live-banner:hover {
+      background: rgba(145, 70, 255, 0.38);
+      transform: translateY(-2px);
+    }
+    @keyframes fadeInBanner {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .live-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ff4444;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(255,68,68,0.3);
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(255,68,68,0.3); }
+      50%       { box-shadow: 0 0 0 6px rgba(255,68,68,0.1); }
+    }
+    .live-info {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex: 1;
+    }
+    .live-badge {
+      background: #ff4444;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+    .live-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+  </style>
+
+  <script src="https://embed.twitch.tv/embed/v1.js"></script>
+  <script>
+    (function() {
+      var embed = new Twitch.Embed('twitch-embed', {
+        width: 1,
+        height: 1,
+        channel: 'haspettree',
+        autoplay: false,
+        muted: true,
+        layout: 'video',
+        parent: [window.location.hostname]
+      });
+      embed.addEventListener(Twitch.Embed.VIDEO_READY, function() {
+        var player = embed.getPlayer();
+        player.addEventListener(Twitch.Player.ONLINE, function() {
+          document.getElementById('live-banner').style.display = 'flex';
+        });
+        player.addEventListener(Twitch.Player.OFFLINE, function() {
+          document.getElementById('live-banner').style.display = 'none';
+        });
+      });
+    })();
+  </script>
+
   <script>
     const wrapper = document.getElementById('linksWrapper');
     const track = document.getElementById('linksTrack');
