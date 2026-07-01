@@ -83,7 +83,7 @@
     <div class="live-header">
       <div class="live-dot"></div>
       <span class="live-badge">LIVE</span>
-      <span class="live-text">HasPetTree is live on Twitch!</span>
+      <span class="live-text">HasPetTree is currently live on Twitch!</span>
       <a class="watch-link" href="https://www.twitch.tv/haspettree" target="_blank" rel="noopener">Watch ↗</a>
     </div>
     <div class="live-embed-wrap">
@@ -127,39 +127,39 @@
     .live-header {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
-      padding: 0.85rem 1.2rem;
+      gap: 0.5rem;
+      padding: 0.6rem 0.9rem;
     }
     .live-dot {
-      width: 10px;
-      height: 10px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: #ff4444;
       flex-shrink: 0;
       animation: pulse-dot 1.5s ease-in-out infinite;
     }
     @keyframes pulse-dot {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(255,68,68,0.3); }
-      50%       { box-shadow: 0 0 0 7px rgba(255,68,68,0.08); }
+      0%, 100% { box-shadow: 0 0 0 2px rgba(255,68,68,0.3); }
+      50%       { box-shadow: 0 0 0 5px rgba(255,68,68,0.08); }
     }
     .live-badge {
       background: #ff4444;
       color: #fff;
-      font-size: 0.68rem;
+      font-size: 0.6rem;
       font-weight: 800;
       letter-spacing: 0.1em;
-      padding: 0.18rem 0.5rem;
-      border-radius: 4px;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
       flex-shrink: 0;
     }
     .live-text {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
       flex: 1;
     }
     .watch-link {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: #c084fc;
       text-decoration: none;
